@@ -1,0 +1,58 @@
+{
+  "name": "capacitor-original-photo-picker",
+  "version": "0.1.0",
+  "description": "Capacitor plugin that picks a photo from the Android gallery and returns the original file with EXIF GPS preserved.",
+  "main": "dist/plugin.cjs.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "unpkg": "dist/plugin.js",
+  "files": [
+    "android/src/main/",
+    "android/build.gradle",
+    "dist/",
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    "README.md"
+  ],
+  "author": "Corey Farwell <coreyf@rwell.org>",
+  "license": "(MIT OR Apache-2.0)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/observ-ing/capacitor-original-photo-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/observ-ing/capacitor-original-photo-picker/issues"
+  },
+  "keywords": [
+    "capacitor",
+    "capacitor-plugin",
+    "android",
+    "photo",
+    "gallery",
+    "exif",
+    "gps",
+    "mediastore"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc && rollup -c rollup.config.mjs",
+    "clean": "rimraf ./dist",
+    "verify": "npm run verify:web && npm run verify:android",
+    "verify:web": "npm run build",
+    "verify:android": "cd android && ./gradlew clean build test && cd .."
+  },
+  "devDependencies": {
+    "@capacitor/core": "^8.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.27.0",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": {
+    "@capacitor/core": "^8.0.0"
+  },
+  "capacitor": {
+    "android": {
+      "src": "android"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  typescript:
+    name: TypeScript build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+
+  android:
+    name: Android build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10.2'
+      # `prepare` runs the TypeScript build, which is unrelated to the Android
+      # job — skip it so the Android job stays focused on Gradle. We only need
+      # @capacitor/android in node_modules for settings.gradle to resolve.
+      - run: npm ci --ignore-scripts
+      - name: Build Android library
+        working-directory: android
+        run: gradle :build

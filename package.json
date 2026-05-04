@@ -43,6 +43,7 @@
     "verify:android": "cd android && ./gradlew clean build test && cd .."
   },
   "devDependencies": {
+    "@capacitor/android": "^8.0.0",
     "@capacitor/core": "^8.0.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "rimraf": "^6.0.1",

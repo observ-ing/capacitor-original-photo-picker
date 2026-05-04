@@ -1,0 +1,7 @@
+// settings.gradle exists for standalone CI builds. When this plugin is
+// consumed from a Capacitor app, the consumer's android/settings.gradle
+// drives project resolution and this file is ignored.
+rootProject.name = 'capacitor-original-photo-picker'
+
+include ':capacitor-android'
+project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/android/capacitor')

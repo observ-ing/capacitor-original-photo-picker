@@ -1,6 +1,7 @@
 {
   "name": "capacitor-original-photo-picker",
   "version": "0.1.0",
+  "private": true,
   "description": "Capacitor plugin that picks a photo from the Android gallery and returns the original file with EXIF GPS preserved.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -36,6 +37,7 @@
   "scripts": {
     "build": "npm run clean && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
+    "prepare": "npm run build",
     "verify": "npm run verify:web && npm run verify:android",
     "verify:web": "npm run build",
     "verify:android": "cd android && ./gradlew clean build test && cd .."

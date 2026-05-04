@@ -10,9 +10,17 @@ The upstream Capacitor Camera plugin does not implement this — see issues [#10
 
 ## Install
 
+This package is not published to npm. Install directly from the git repo:
+
 ```sh
-npm install capacitor-original-photo-picker
+npm install github:observ-ing/capacitor-original-photo-picker
 npx cap sync android
+```
+
+Pin to a tag or commit for reproducible builds:
+
+```sh
+npm install github:observ-ing/capacitor-original-photo-picker#v0.1.0
 ```
 
 ## Platforms
